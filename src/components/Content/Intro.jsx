@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import { useGlitch } from 'react-powerglitch'
 import Lottie from 'lottie-react'
-import walkingPerson from '@/assets/animations/walkingPerson'
 import scrollDown from '@/assets/animations/scrollDown'
 import { motion } from 'framer-motion'
 import Typed from 'typed.js';
