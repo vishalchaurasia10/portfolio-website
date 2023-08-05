@@ -1,13 +1,16 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { motion } from 'framer-motion'
 import Lottie from 'lottie-react'
 import githubLogo from '@/assets/animations/githubLogo'
 import Image from 'next/image'
 import Link from 'next/link'
 import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import mouseVariantsContext from '@/context/mouseVariants/mouseVariantsContext'
 
 const Navbar = () => {
 
+    const MouseVariantsContext = useContext(mouseVariantsContext);
+    const { navbarEnter, textLeave } = MouseVariantsContext;
     const [isOpen, setIsOpen] = useState(false);
 
     const handleHamburgerClick = () => {
@@ -27,18 +30,26 @@ const Navbar = () => {
 
                 <div className="center hidden md:flex w-1/2 items-center justify-center">
                     <ul className='flex text-[#58ff13] space-x-8 rounded-full py-2 px-10 border-2 border-[#58ff13]'>
-                        <Link href='/'>
-                            <li className='whitespace-nowrap'>Home</li>
-                        </Link>
-                        <Link href='/projects'>
-                            <li className='whitespace-nowrap'>Projects</li>
-                        </Link>
-                        <Link href='/aboutme'>
-                            <li className='whitespace-nowrap'>About Me</li>
-                        </Link>
-                        <Link href='/gallery'>
-                            <li className='whitespace-nowrap'>Gallery</li>
-                        </Link>
+                        <li onMouseEnter={navbarEnter} onMouseLeave={textLeave} className='whitespace-nowrap'>
+                            <Link href='/'>
+                                Home
+                            </Link>
+                        </li>
+                        <li onMouseEnter={navbarEnter} onMouseLeave={textLeave} className='whitespace-nowrap'>
+                            <Link href='/projects'>
+                                Projects
+                            </Link>
+                        </li>
+                        <li onMouseEnter={navbarEnter} onMouseLeave={textLeave} className='whitespace-nowrap'>
+                            <Link href='/aboutme'>
+                                About Me
+                            </Link>
+                        </li>
+                        <li onMouseEnter={navbarEnter} onMouseLeave={textLeave} className='whitespace-nowrap'>
+                            <Link href='/gallery'>
+                                Gallery
+                            </Link>
+                        </li>
                     </ul>
                 </div>
 
