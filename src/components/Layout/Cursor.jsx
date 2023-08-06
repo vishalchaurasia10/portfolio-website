@@ -32,6 +32,14 @@ const Cursor = () => {
             y: mousePostition.y - 40,
             backgroundColor: "yellow",
             mixBlendMode: "difference",
+        },
+        button: {
+            height: 120,
+            width: 120,
+            x: mousePostition.x - 40,
+            y: mousePostition.y - 40,
+            backgroundColor: "#FFCCCC",
+            mixBlendMode: "difference",
         }
     }
 
@@ -57,7 +65,7 @@ const Cursor = () => {
         <motion.div
             variants={variants}
             animate={cursorVariant}
-            className='cursor z-50 bg-white h-8 w-8 hidden md:block pointer-events-none rounded-full fixed -top-4 -left-4'>
+            className='cursor z-50 bg-white h-8 w-8 hidden lg:block pointer-events-none rounded-full fixed -top-4 -left-4'>
         </motion.div>
     )
 }

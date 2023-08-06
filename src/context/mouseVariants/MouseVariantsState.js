@@ -17,8 +17,12 @@ const MouseVariantsState = (props) => {
         setCursorVariant('navbar');
     }
 
+    const buttonEnter = () => {
+        setCursorVariant('button');
+    }
+
     return (
-        <MouseVariantsContext.Provider value={{ cursorVariant, setCursorVariant, textEnter, textLeave, navbarEnter }}>
+        <MouseVariantsContext.Provider value={{ cursorVariant, setCursorVariant, textEnter, textLeave, navbarEnter, buttonEnter }}>
             {props.children}
         </MouseVariantsContext.Provider>
     )

@@ -13,6 +13,10 @@ const Intro = () => {
   const MouseVariantsContext = useContext(mouseVariantsContext);
   const { textEnter, textLeave } = MouseVariantsContext;
 
+  const handlescrollAnimation = () => {
+    console.log('complete')
+  }
+
   useEffect(() => {
     if (el.current == null) return;
     const typed = new Typed(el.current, {
@@ -54,7 +58,11 @@ const Intro = () => {
         </motion.div>
 
         <div className='h-10 bg-black absolute bottom-20 cursor-pointer'>
-          <Lottie onMouseEnter={textEnter} onMouseLeave={textLeave} animationData={scrollDown} />
+          <Lottie
+            onComplete={handlescrollAnimation}
+            onMouseEnter={textEnter}
+            onMouseLeave={textLeave}
+            animationData={scrollDown} />
         </div>
       </div>
     </>
