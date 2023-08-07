@@ -1,10 +1,12 @@
 import Image from 'next/image'
 import React, { useContext } from 'react'
 import mouseVariantsContext from '@/context/mouseVariants/mouseVariantsContext'
+import Lottie from 'lottie-react'
+import scrollDown from '@/assets/animations/scrollDown'
 
 const About = () => {
     const MouseVariantsContext = useContext(mouseVariantsContext);
-    const { importantEnter, textLeave } = MouseVariantsContext;
+    const { importantEnter, textEnter, textLeave } = MouseVariantsContext;
     const startDate = new Date(2003, 9); // Month is zero-based, so 9 represents October
     const currentDate = new Date();
     const yearsDiff = currentDate.getFullYear() - startDate.getFullYear();
@@ -13,7 +15,7 @@ const About = () => {
 
     return (
         <>
-            <div className="container pt-20 md:pt-28 px-5 md:w-fit md:mx-auto md:space-x-10 lg:space-x-20 font-firaCode flex flex-col md:flex-row">
+            <div className="container relative mb-10 md:mb-8 lg:-mb-2 pt-20 md:pt-28 px-5 md:w-fit md:mx-auto md:space-x-10 lg:space-x-20 font-firaCode flex flex-col md:flex-row">
                 <div className="content md:w-1/2 lg:w-[62%] flex flex-col xl:relative xl:top-16 space-y-4 order-2 md:order-1 text-white text-md lg:text-xl text-justify">
                     <p>
                         Hello there! I&apos;m <strong onMouseEnter={importantEnter} onMouseLeave={textLeave} className='text-[#57E6D9]'> Vishal Chaurasia</strong>, a passionate and enthusiastic {Math.floor(totalMonths / 12)}-year-old <strong onMouseEnter={importantEnter} onMouseLeave={textLeave} className='text-[#57E6D9]'> Full-Stack Developer</strong> from India.
@@ -25,7 +27,7 @@ const About = () => {
                         Apart from coding, I am also passionate about design and creativity. I enjoy exploring the intersection of art and technology to create visually stunning and engaging user experiences.
                     </p>
                     <p>
-                        Feel free to explore my portfolio and get in touch if you&apos;d like to collaborate or just say hello.<strong onMouseEnter={importantEnter} onMouseLeave={textLeave} className='text-[#57E6D9]'> Let&apos;s create something amazing together!</strong> 
+                        Feel free to explore my portfolio and get in touch if you&apos;d like to collaborate or just say hello.<strong onMouseEnter={importantEnter} onMouseLeave={textLeave} className='text-[#57E6D9]'> Let&apos;s create something amazing together!</strong>
                     </p>
                 </div>
 
@@ -34,7 +36,14 @@ const About = () => {
                     <Image onMouseEnter={importantEnter} onMouseLeave={textLeave} className='rounded-3xl relative z-10' src="/assets/images/vc.jpg" alt="Picture of the author" width={500} height={500} />
                 </div>
             </div>
-            <div className="line mx-auto rounded-full my-6 w-3/4 h-1 bg-[#57E6D9]"></div>
+            <div className='hidden md:flex mb-10 items-center justify-center  bg-black cursor-pointer'>
+                <Lottie
+                className='w-16 h-16'
+                    onMouseEnter={textEnter}
+                    onMouseLeave={textLeave}
+                    animationData={scrollDown} />
+            </div>
+
         </>
     )
 }

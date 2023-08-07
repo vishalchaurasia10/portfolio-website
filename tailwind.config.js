@@ -37,6 +37,12 @@ module.exports = {
         'pressStart': ['Press Start 2P', 'cursive'],
         'jost': ['Jost', 'sans-serif'],
       },
+      backgroundImage: {
+        circularDark: 'repeating-radial-gradient(rgba(255,255,255,0.8) 2px, #000000 8px, #000000 100px);',
+        circularDarkLg: 'repeating-radial-gradient(rgba(255,255,255,0.8) 2px, #000000 8px, #000000 84px);',
+        circularDarkMd: 'repeating-radial-gradient(rgba(255,255,255,0.8) 2px, #000000 6px, #000000 60px);',
+        circularDarkSm: 'repeating-radial-gradient(rgba(255,255,255,0.8) 2px, #000000 4px, #000000 40px);',
+      }
     },
   },
   plugins: [],
