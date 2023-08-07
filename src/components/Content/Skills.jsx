@@ -1,8 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { InView } from 'react-intersection-observer';
+import mouseVariantsContext from '@/context/mouseVariants/mouseVariantsContext';
 
 const Skill = ({ name, x, y }) => {
+
+    const MouseVariants = useContext(mouseVariantsContext);
+    const { buttonEnter, textLeave } = MouseVariants;
 
     return (
         <InView triggerOnce={true}>
@@ -12,7 +16,9 @@ const Skill = ({ name, x, y }) => {
                     whileHover={{ scale: 1.1 }}
                     initial={{ x: 0, y: 0 }}
                     animate={{ x: inView ? x : 0, y: inView ? y : 0 }}
-                    transition={{ duration: 1.5 }}
+                    transition={{ duration: 1.0 }}
+                    onMouseEnter={buttonEnter}
+                    onMouseLeave={textLeave}
                     className='items-center text-sm md:text-lg lg:text-xl flex justify-center rounded-3xl font-semibold bg-[rgba(255,255,255,0.9)] text-black px-4 py-2 shadow-[rgba(255,255,255,0.5)] shadow-2xl absolute'
                 >
                     {name}
@@ -26,6 +32,9 @@ const Skill = ({ name, x, y }) => {
 const Skills = () => {
     const [width, setWidth] = useState(0);
 
+    const MouseVariants = useContext(mouseVariantsContext);
+    const { importantEnter, textLeave } = MouseVariants;
+
     useEffect(() => {
         setWidth(window.innerWidth);
         const handleResize = () => setWidth(window.innerWidth);
@@ -37,12 +46,14 @@ const Skills = () => {
         <>
             <div className="container font-firaCode md:w-full md:mx-auto">
                 <div className="heading px-5 flex items-center space-x-4">
-                    <h1 className='text-5xl my-8 font-extrabold text-[#57E6D9]'>Skills</h1>
+                    <h1 className='text-5xl md:text-7xl my-8 font-extrabold text-[#57E6D9]'>Skills</h1>
                     <div className="line rounded-full w-3/4 h-1 bg-[#57E6D9]"></div>
                 </div>
                 <div className="web relative my-10 flex items-center justify-center rounded-full bg-circularDarkSm md:bg-circularDarkMd lg:bg-circularDarkLg xl:bg-circularDark md:h-[60vh] h-[50vh] lg:h-[80vh] xl:h-[95vh] w-full">
                     <motion.div
                         whileHover={{ scale: 1.1 }}
+                        onMouseEnter={importantEnter}
+                        onMouseLeave={textLeave}
                         className='items-center text-sm md:text-lg flex justify-center rounded-full font-semibold bg-[#57E6D9] text-black px-6  py-3 shadow-[#57E6D9] shadow-2xl'>
                         CS
                     </motion.div>
