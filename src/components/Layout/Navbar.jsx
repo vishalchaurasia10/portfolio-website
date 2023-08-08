@@ -6,12 +6,14 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
 import mouseVariantsContext from '@/context/mouseVariants/mouseVariantsContext'
+import { useRouter } from 'next/router'
 
 const Navbar = () => {
 
     const MouseVariantsContext = useContext(mouseVariantsContext);
     const { navbarEnter, textLeave } = MouseVariantsContext;
-    const [isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(false)
+    const router = useRouter();
 
     const handleHamburgerClick = () => {
         setIsOpen(!isOpen);
@@ -29,20 +31,20 @@ const Navbar = () => {
                 </div>
 
                 <div className="center hidden md:flex w-1/2 items-center justify-center">
-                    <ul className='flex text-[#57E6D9] space-x-8 rounded-full py-2 px-10 border-2 border-[#57E6D9]'>
+                    <ul className={`flex space-x-8 rounded-full py-2 px-10 border-2 ${router.pathname === '/' ? 'border-[#58ff13] text-[#58ff13]' : 'border-[#57E6D9] text-[#57E6D9]'} `}>
                         <li onMouseEnter={navbarEnter} onMouseLeave={textLeave} className='whitespace-nowrap'>
                             <Link href='/'>
                                 Home
                             </Link>
                         </li>
                         <li onMouseEnter={navbarEnter} onMouseLeave={textLeave} className='whitespace-nowrap'>
-                            <Link href='/projects'>
-                                Projects
+                            <Link href='/aboutme'>
+                                About Me
                             </Link>
                         </li>
                         <li onMouseEnter={navbarEnter} onMouseLeave={textLeave} className='whitespace-nowrap'>
-                            <Link href='/aboutme'>
-                                About Me
+                            <Link href='/projects'>
+                                Projects
                             </Link>
                         </li>
                         <li onMouseEnter={navbarEnter} onMouseLeave={textLeave} className='whitespace-nowrap'>

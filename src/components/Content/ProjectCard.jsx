@@ -1,13 +1,39 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { FaGithub } from 'react-icons/fa'
 import mouseVariantsContext from '@/context/mouseVariants/mouseVariantsContext'
 import { motion } from 'framer-motion'
+import SimpleImageSlider from "react-simple-image-slider";
 
 const ProjectCard = () => {
     const MouseVariantsContext = useContext(mouseVariantsContext);
     const { buttonEnter, textLeave } = MouseVariantsContext;
+    const images = [
+        { url: 'https://media.istockphoto.com/id/1146517111/photo/taj-mahal-mausoleum-in-agra.jpg?s=612x612&w=0&k=20&c=vcIjhwUrNyjoKbGbAQ5sOcEzDUgOfCsm9ySmJ8gNeRk=' },
+        { url: 'https://media.istockphoto.com/id/1146517111/photo/taj-mahal-mausoleum-in-agra.jpg?s=612x612&w=0&k=20&c=vcIjhwUrNyjoKbGbAQ5sOcEzDUgOfCsm9ySmJ8gNeRk=' },
+        { url: 'https://media.istockphoto.com/id/1146517111/photo/taj-mahal-mausoleum-in-agra.jpg?s=612x612&w=0&k=20&c=vcIjhwUrNyjoKbGbAQ5sOcEzDUgOfCsm9ySmJ8gNeRk=' },
+        { url: 'https://media.istockphoto.com/id/1146517111/photo/taj-mahal-mausoleum-in-agra.jpg?s=612x612&w=0&k=20&c=vcIjhwUrNyjoKbGbAQ5sOcEzDUgOfCsm9ySmJ8gNeRk=' },
+    ]
+
+    useEffect(() => {
+        const handleSliderMount = () => {
+            const rsisImage = document.getElementsByClassName('rsis-container');
+            Array.from(rsisImage).forEach(child => {
+                if (child) {
+                    const parentElement = child.parentElement;
+                    const grandParentElement = parentElement.parentElement;
+                    grandParentElement.style.position = 'relative';
+                    grandParentElement.style.width = '100%';
+                    parentElement.style.width = '100%';
+                    parentElement.style.borderRadius = '1rem';
+                }
+            });
+        };
+
+        handleSliderMount();
+    }, [])
+
     return (
 
         <motion.div
@@ -20,10 +46,16 @@ const ProjectCard = () => {
             <div className='absolute top-0 -right-3 z-0 w-[101%] h-[102.5%] rounded-[2rem] bg-slate-400' />
             <div className="projectCard relative z-10 bg-black font-firaCode space-y-4 md:space-y-5 border border-white w-full rounded-[2rem] p-5 md:p-7 text-[#E5E5E5]">
 
-                <div className="slider">
-                    <Link href="/projects/1">
-                        <img className='w-full md:h-56 rounded-2xl' src="https://media.istockphoto.com/id/1146517111/photo/taj-mahal-mausoleum-in-agra.jpg?s=612x612&w=0&k=20&c=vcIjhwUrNyjoKbGbAQ5sOcEzDUgOfCsm9ySmJ8gNeRk=" alt="Project 1" width={300} height={200} />
-                    </Link>
+                <div className="slider rounded-2xl w-full">
+                    <SimpleImageSlider
+                        // style={{ borderRadius: '2rem !important' }}
+                        width={300}
+                        height={200}
+                        images={images}
+                        // showBullets={true}
+                        autoPlay={true}
+                        loop={true}
+                    />
                 </div>
 
                 <div className="content flex flex-col space-y-[0.3rem] md:space-y-4">

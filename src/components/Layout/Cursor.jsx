@@ -81,6 +81,7 @@ const Cursor = () => {
         <motion.div
             variants={variants}
             animate={cursorVariant}
+            transition={{duration: 0.1}}
             className='cursor z-50 bg-white h-8 w-8 hidden lg:block pointer-events-none rounded-full fixed -top-4 -left-4'>
         </motion.div>
     )

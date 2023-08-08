@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600;700&family=Jost&family=Press+Start+2P&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600;700&family=Jost&family=Press+Start+2P&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -8,15 +8,14 @@
   cursor: none;
 } */
 
-body{
+body {
   background-color: black;
 }
 
 .typed-cursor {
-    display: none;
-  }
+  display: none;
+}
 
-  .typed-container .typed-cursor {
-    display: none;
-  }
-  
+.typed-container .typed-cursor {
+  display: none;
+}

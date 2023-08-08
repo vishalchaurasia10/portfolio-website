@@ -1,6 +1,6 @@
 import React, { useContext, useRef } from 'react';
 import { motion, useScroll } from 'framer-motion';
-import LiIcon from './LiIcon';
+import LiIcon from '../Layout/LiIcon';
 import mouseVariantsContext from '@/context/mouseVariants/mouseVariantsContext';
 
 const ListComponent = ({ title, college, time, description }) => {
