@@ -15,7 +15,7 @@ const LiIcon = ({ reference }) => {
                     style={{
                         pathLength: scrollYProgress
                     }} />
-                <circle cx="75" cy="50" r="10" className='stroke-1 fill-[#57E6D9]' />
+                <circle cx="75" cy="50" r="10" className='stroke-1 animate-pulse fill-[#57E6D9]' />
             </svg>
         </figure>
     )

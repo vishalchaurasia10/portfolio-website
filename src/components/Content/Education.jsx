@@ -10,11 +10,18 @@ const ListComponent = ({ title, college, time, description }) => {
 
     return (
         <li id='1' ref={ref} className='text-white flex flex-col'>
-            <LiIcon reference = {ref} />
-            <h1 onMouseEnter={buttonEnter} onMouseLeave={textLeave} className='text-2xl md:text-4xl mb-3 font-extrabold'>{title}</h1>
-            <h2 className='text-lg md:text-3xl mb-1 text-gray-400 font-bold'>{college}</h2>
-            <h3 className='text-base md:text-2xl text-gray-400 mb-4'>{time}</h3>
-            <p>{description}</p>
+            <LiIcon reference={ref} />
+            <motion.div
+                initial={{ y: 50, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1 }}
+                className="wrapper">
+                <h1 onMouseEnter={buttonEnter} onMouseLeave={textLeave} className='text-2xl md:text-4xl mb-3 font-extrabold'>{title}</h1>
+                <h2 className='text-lg md:text-3xl mb-1 text-gray-400 font-bold'>{college}</h2>
+                <h3 className='text-base md:text-2xl text-gray-400 mb-4'>{time}</h3>
+                <p>{description}</p>
+            </motion.div>
         </li>
     )
 }
