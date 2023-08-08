@@ -23,13 +23,13 @@ const Navbar = () => {
                 initial={{ opacity: 0, y: -100 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0, duration: 0.5 }}
-                className='fixed top-0 left-0 z-50 w-full py-4 flex justify-center items-center font-firaCode text-xl bg-black'>
+                className='fixed top-0 left-0 z-40 w-full py-4 flex justify-center items-center font-firaCode text-xl bg-black'>
                 <div className="left w-1/2 md:w-1/4 pl-4 md:pl-8 flex items-center">
                     <Image className='h-8 w-8 relative md:-top-2 rounded-full' src='/assets/images/portfolioLogo.jpg' width={100} height={100} alt='Logo' />
                 </div>
 
                 <div className="center hidden md:flex w-1/2 items-center justify-center">
-                    <ul className='flex text-[#58ff13] space-x-8 rounded-full py-2 px-10 border-2 border-[#58ff13]'>
+                    <ul className='flex text-[#57E6D9] space-x-8 rounded-full py-2 px-10 border-2 border-[#57E6D9]'>
                         <li onMouseEnter={navbarEnter} onMouseLeave={textLeave} className='whitespace-nowrap'>
                             <Link href='/'>
                                 Home
@@ -81,15 +81,69 @@ const Navbar = () => {
                     </div>
                 </div>
             </motion.nav>
-            {isOpen &&
-                <motion.div
-                    initial={{ scale: 0, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
+            {
+                <div onClick={() => setIsOpen(false)} className={`wrapper md:hidden overflow-hidden ${isOpen ? 'backdrop-blur-md' : ''} transition-all duration-300 fixed z-30`}>
+                    <motion.div
+                        initial={{ x: '100%', opacity: 0 }}
+                        animate={{ x: isOpen ? '40%' : '100%', opacity: 1 }}
+                        transition={{ duration: 0.3 }}
+                        className={`mobileNavbar bg-black font-firaCode ${isOpen ? 'shadow-[#57E6D9] shadow-2xl' : ''} pt-24 px-10 text-white h-screen w-screen`}>
+                        <ul className='flex flex-col space-y-8'>
+                            <li className='text-xl'>
+                                <Link href='/'>
+                                    Home
+                                </Link>
+                            </li>
+                            <li className='text-xl'>
+                                <Link href='/aboutme'>
+                                    About Me
+                                </Link>
+                            </li>
+                            <li className='text-xl'>
+                                <Link href='/projects'>
+                                    Projects
+                                </Link>
+                            </li>
+                            <li className='text-xl'>
+                                <Link href='/gallery'>
+                                    Gallery
+                                </Link>
+                            </li>
+                            <li className='text-xl'>
+                                <Link className='flex space-x-3' target='_blank' href='https://github.com/vishalchaurasia10'>
+                                    <span>Github</span><FaGithub className='h-6 w-6 text-white' />
+                                </Link>
+                            </li>
+                            <li className='text-xl'>
+                                <Link className='flex space-x-3' target='_blank' href='https://twitter.com/vishalstwt'>
+                                    <span>Twitter</span><FaTwitter className='h-6 w-6 text-white' />
+                                </Link>
+                            </li>
+                            <li className='text-xl'>
+                                <Link className='flex space-x-3' target='_blank' href='https://www.linkedin.com/in/vishalchaurasia10/'>
+                                    <span>Linkedin</span><FaLinkedin className='h-6 w-6 text-white' />
+                                </Link>
+                            </li>
+                        </ul>
+                    </motion.div>
+                </div>
+            }
+
+        </>
+    )
+}
+
+export default Navbar
+
+
+{/* <motion.div
+                    initial={{ x: 100, opacity: 0 }}
+                    animate={{ x: 50, opacity: 1 }}
                     // transition={{ duration: 0.2 }}
-                    className="mobile md:hidden z-40 bg-black absolute h-screen -top-8 w-full flex items-center justify-center">
-                    <ul className='flex z-40 bg-black flex-col items-center justify-center text-[#58ff13] space-y-5 h-[45%] w-[60%] py-8 px-10 rounded-xl shadow-2xl shadow-[#58ff13] border-2 border-[#58ff13]'>
+                    className="mobile md:hidden z-30 bg-slate-400 absolute h-screen w-full flex items-center justify-center">
+                    <ul className='flex z-40 h-screen w-full flex-col text-[#58ff13] space-y-5 py-8 px-10'>
                         <Link href='/'>
-                            <li className='whitespace-nowrap'>Home</li>
+                            <li className='whitespace-nowrap text-5xl'>Home</li>
                         </Link>
                         <Link href='/projects'>
                             <li className='whitespace-nowrap'>Projects</li>
@@ -112,10 +166,4 @@ const Navbar = () => {
                             </Link>
                         </li>
                     </ul>
-                </motion.div>}
-
-        </>
-    )
-}
-
-export default Navbar
+                </motion.div> */}

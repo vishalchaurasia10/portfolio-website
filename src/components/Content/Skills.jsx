@@ -44,12 +44,17 @@ const Skills = () => {
 
     return (
         <>
-            <div className="container font-firaCode md:w-full md:mx-auto">
+            <div id='skills' className="container md:pt-24 font-firaCode md:w-full md:mx-auto">
                 <div className="heading px-5 flex items-center space-x-4">
                     <h1 className='text-5xl md:text-7xl my-8 font-extrabold text-[#57E6D9]'>Skills</h1>
                     <div className="line rounded-full w-3/4 h-1 bg-[#57E6D9]"></div>
                 </div>
-                <div className="web relative my-10 flex items-center justify-center rounded-full bg-circularDarkSm md:bg-circularDarkMd lg:bg-circularDarkLg xl:bg-circularDark md:h-[60vh] h-[50vh] lg:h-[80vh] xl:h-[95vh] w-full">
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.5 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 1 }}
+                    viewport={{ once: true }}
+                    className="web relative my-10 flex items-center justify-center rounded-full bg-circularDarkSm md:bg-circularDarkMd lg:bg-circularDarkLg xl:bg-circularDark md:h-[60vh] h-[50vh] lg:h-[80vh] xl:h-[95vh] w-full">
                     <motion.div
                         whileHover={{ scale: 1.1 }}
                         onMouseEnter={importantEnter}
@@ -129,7 +134,7 @@ const Skills = () => {
                                 <Skill name='Inkscape' x='18vw' y='15vw' />
                             </> : ''
                     }
-                </div>
+                </motion.div>
             </div>
         </>
     )

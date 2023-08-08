@@ -44,8 +44,8 @@ const Education = () => {
                 <div ref={ref} className="points w-3/4 mx-auto relative">
                     <motion.div
                         style={{ scaleY: scrollYProgress }}
-                        className="line absolute rounded-full -left-8 top-0 w-1 h-full bg-[#57E6D9] origin-top"></motion.div>
-                    <div className="content">
+                        className="line absolute transition-all duration-100 rounded-full -left-8 top-0 w-1 h-full bg-[#57E6D9] origin-top"></motion.div>
+                    <div className="content ml-2 md:ml-6 lg:ml-10">
                         <ul className='flex flex-col space-y-20'>
                             <ListComponent
                                 title="B.Tech in Computer Science and Engineering"

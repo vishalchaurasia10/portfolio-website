@@ -3,15 +3,21 @@ import Link from 'next/link'
 import React, { useContext } from 'react'
 import { FaGithub } from 'react-icons/fa'
 import mouseVariantsContext from '@/context/mouseVariants/mouseVariantsContext'
+import { motion } from 'framer-motion'
 
 const ProjectCard = () => {
     const MouseVariantsContext = useContext(mouseVariantsContext);
     const { buttonEnter, textLeave } = MouseVariantsContext;
     return (
 
-        <div className="wrapper relative lg:w-[25rem] xl:w-[24rem] mb-8 md:mb-16 lg:mr-7 xl:mr-7">
+        <motion.div
+            initial={{ opacity: 0, y: 100 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.2 }}
+            viewport={{ once: true }}
+            className="wrapper relative lg:w-[25rem] xl:w-[24rem] mb-8 md:mb-16 lg:mr-7 xl:mr-7">
 
-            <div className='absolute top-0 -right-3 z-0 w-[101%] h-[102.5%] rounded-[2rem] bg-[#E5E5E5]' />
+            <div className='absolute top-0 -right-3 z-0 w-[101%] h-[102.5%] rounded-[2rem] bg-slate-400' />
             <div className="projectCard relative z-10 bg-black font-firaCode space-y-4 md:space-y-5 border border-white w-full rounded-[2rem] p-5 md:p-7 text-[#E5E5E5]">
 
                 <div className="slider">
@@ -34,7 +40,7 @@ const ProjectCard = () => {
                 </div>
 
             </div>
-        </div>
+        </motion.div>
     )
 }
 
