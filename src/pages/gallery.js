@@ -1,10 +1,13 @@
+import Gallery from '@/components/Content/Gallery'
+import Transition from '@/components/Layout/Transition'
 import React from 'react'
 
 const gallery = () => {
   return (
-    <div>
-        yahin milenge gallery aapko
-    </div>
+    <>
+      <Transition />
+      <Gallery />
+    </>
   )
 }
 

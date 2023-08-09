@@ -8,7 +8,7 @@ import SimpleImageSlider from "react-simple-image-slider";
 
 const ProjectCard = () => {
     const MouseVariantsContext = useContext(mouseVariantsContext);
-    const { buttonEnter, textLeave } = MouseVariantsContext;
+    const { buttonEnter,importantEnter, textLeave } = MouseVariantsContext;
     const images = [
         { url: 'https://media.istockphoto.com/id/1146517111/photo/taj-mahal-mausoleum-in-agra.jpg?s=612x612&w=0&k=20&c=vcIjhwUrNyjoKbGbAQ5sOcEzDUgOfCsm9ySmJ8gNeRk=' },
         { url: 'https://media.istockphoto.com/id/1146517111/photo/taj-mahal-mausoleum-in-agra.jpg?s=612x612&w=0&k=20&c=vcIjhwUrNyjoKbGbAQ5sOcEzDUgOfCsm9ySmJ8gNeRk=' },
@@ -48,11 +48,9 @@ const ProjectCard = () => {
 
                 <div className="slider rounded-2xl w-full">
                     <SimpleImageSlider
-                        // style={{ borderRadius: '2rem !important' }}
                         width={300}
                         height={200}
                         images={images}
-                        // showBullets={true}
                         autoPlay={true}
                         loop={true}
                     />
