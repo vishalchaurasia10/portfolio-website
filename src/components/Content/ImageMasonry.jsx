@@ -1,12 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry"
 import { motion } from 'framer-motion'
+import mouseVariantsContext from '@/context/mouseVariants/mouseVariantsContext'
 
 const ImageMasonry = ({ imageUrl, date, description, setShowMore, showMore }) => {
 
     const [width, setWidth] = useState(0);
     const [lastImageHeight, setLastImageHeight] = useState('');
     let visibleImages = imageUrl;
+    const MouseVariantsContext = useContext(mouseVariantsContext);
+    const { importantEnter, buttonEnter, textLeave } = MouseVariantsContext;
 
     if (width < 1000) {
         if (imageUrl.length > 4) {
@@ -42,7 +45,7 @@ const ImageMasonry = ({ imageUrl, date, description, setShowMore, showMore }) =>
             transition={{ duration: 1.6 }}
             viewport={{ once: true }}
             onClick={() => { setShowMore(true) }} className="contentGallery ml-2 md:ml-6 lg:ml-10 text-white">
-            <p className='text-[#57E6D9] text-sm md:text-lg mb-2'>{date}</p>
+            <p onMouseEnter={buttonEnter} onMouseLeave={textLeave} className='text-[#57E6D9] text-sm md:text-lg mb-2'>{date}</p>
             <h3 className='mb-4 md:text-lg capitalize'>{description}</h3>
             <div className="gallery mx-auto relative">
                 <ResponsiveMasonry
@@ -51,6 +54,8 @@ const ImageMasonry = ({ imageUrl, date, description, setShowMore, showMore }) =>
                     <Masonry gutter='10px'>
                         {visibleImages.map((image, i) => (
                             <img
+                                onMouseEnter={importantEnter}
+                                onMouseLeave={textLeave}
                                 className='rounded-lg md:rounded-2xl'
                                 key={i}
                                 src={image}
