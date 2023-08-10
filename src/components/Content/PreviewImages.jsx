@@ -1,5 +1,4 @@
 import React from 'react'
-import Image from 'next/image'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/scrollbar';
@@ -11,7 +10,7 @@ const PreviewImages = ({ images, setShowMore }) => {
 
     return (
         <>
-            <FaTimesCircle onClick={() => { setShowMore(false) }} className='absolute top-32 right-0 text-3xl text-white cursor-pointer' />
+            <FaTimesCircle onClick={() => { setShowMore(false) }} className='absolute z-40 top-32 right-0 text-3xl text-white cursor-pointer' />
             <div className="wrapper h-screen overflow-hidden flex items-center justify-center bg-black">
                 <Swiper className='mySwiper lg:w-1/2 h-fit rounded-lg shadow-[#382b16]'
                     grabCursor={true}

@@ -141,7 +141,7 @@ const UploadProjects = () => {
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                exit={{ opacity: 1 }}
+                transition={{ duration: 0.5 }}
                 className='projects flex flex-col items-center justify-center space-y-4 mt-4'>
                 <div className="dateType w-full flex flex-col items-center space-y-4">
                     <div className="dates md:w-full">

@@ -49,7 +49,7 @@ const UploadPhotos = () => {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
+        transition={{ duration: 0.5 }}
         className="uploadPhotos flex flex-col items-center justify-center space-y-4 mt-4">
         <input onChange={handleChange} className='w-full rounded-lg px-4 py-2 bg-[rgba(255,255,255,0.2)] outline-none' type="date" name='date' />
         <textarea onChange={handleChange} value={galleryDetails.description} className='w-full rounded-lg px-4 py-2 bg-[rgba(255,255,255,0.2)] outline-none' name="description" id="description" cols="30" rows="4" />

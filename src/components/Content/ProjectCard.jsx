@@ -52,14 +52,14 @@ const ProjectCard = ({ elementKey, imageUrl, name, repoUrl, deployUrl, startDate
 
                 <div className="content flex flex-col space-y-[0.3rem] md:space-y-4">
                     <div className="time flex justify-between items-center">
-                        <span className='text-lg md:text-xl text-[#57E6D9]'>{type}</span>
+                        <span className='text-lg md:text-xl text-[#57E6D9] capitalize'>{type}</span>
                         <span className='text-sm'>{startDate} - {endDate}</span>
                     </div>
-                    <Link onMouseEnter={buttonEnter} onMouseLeave={textLeave} className='text-2xl md:text-3xl font-extrabold' href='/'>{name}</Link>
-                    <p className="description text-justify">{description}</p>
+                    <Link onMouseEnter={buttonEnter} onMouseLeave={textLeave} className='text-2xl capitalize md:text-3xl font-extrabold' href='/'>{name}</Link>
+                    <p className="description text-justify capitalize">{description}</p>
                     <div className="visitingLinks py-3 md:py-0 flex space-x-4">
                         <Link href={deployUrl} target='_blank' >
-                            <button onMouseEnter={buttonEnter} onMouseLeave={textLeave} className='bg-white text-black px-4 rounded-md'>Visit</button>
+                            <button onMouseEnter={buttonEnter} onMouseLeave={textLeave} className='bg-white text-black px-4 rounded-md py-1'>Visit</button>
                         </Link>
                         <Link href={repoUrl} target='_blank' >
                             <FaGithub onMouseEnter={buttonEnter} onMouseLeave={textLeave} className="github w-8 h-8" />

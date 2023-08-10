@@ -93,8 +93,27 @@ const GalleryState = (props) => {
         }
     };
 
+    const fetchGalleryDocuments = async () => {
+        try {
+            const client = new Client()
+                .setEndpoint('https://cloud.appwrite.io/v1')
+                .setProject(process.env.NEXT_PUBLIC_PROJECT_ID);
+
+            const databases = new Databases(client);
+
+            const result = await databases.listDocuments(
+                process.env.NEXT_PUBLIC_DATABASE_ID,
+                process.env.NEXT_PUBLIC_GALLERY_COLLECTION_ID,
+            );
+
+            setGallery(result.documents);
+        } catch (error) {
+            toast.error(error.message);
+        }
+    }
+
     return (
-        <GalleryContext.Provider value={{ gallery, setGallery, uploadPhotos }}>
+        <GalleryContext.Provider value={{ gallery, uploadPhotos, fetchGalleryDocuments }}>
             <Toaster />
             {props.children}
         </GalleryContext.Provider>

@@ -12,10 +12,6 @@ const Projects = () => {
         }
     }, [])
 
-    useEffect(() => {
-        console.log(projects)
-    }, [projects])
-
     return (
         <>
             <div className='pt-24 px-4 py-8 md:px-32 lg:px-[4.5rem] xl:px-28 bg-black'>
