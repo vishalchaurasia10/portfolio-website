@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import mouseVariantsContext from '@/context/mouseVariants/mouseVariantsContext'
 import { Client, Databases, ID, Storage } from 'appwrite';
 import toast, { Toaster } from 'react-hot-toast';
+import { motion } from 'framer-motion';
 
 const UploadProjects = () => {
     const { buttonEnter, textLeave } = useContext(mouseVariantsContext)
@@ -137,7 +138,11 @@ const UploadProjects = () => {
     return (
         <>
             <Toaster />
-            <div className='projects flex flex-col items-center justify-center space-y-3 mt-4'>
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 1 }}
+                className='projects flex flex-col items-center justify-center space-y-4 mt-4'>
                 <div className="dateType w-full flex flex-col items-center space-y-4">
                     <div className="dates md:w-full">
                         <input onChange={handleChange} className='w-[48%] mr-2 rounded-lg px-4 py-2 bg-[rgba(255,255,255,0.2)] outline-none' name='startDate' type="date" />
@@ -149,11 +154,11 @@ const UploadProjects = () => {
                 <textarea onChange={handleChange} className='w-full rounded-lg px-4 py-2 bg-[rgba(255,255,255,0.2)] outline-none' name="description" id="description" placeholder='Enter the description of the project' cols="30" rows="4"></textarea>
                 <input onChange={handleChange} className='w-full rounded-lg px-4 py-2 bg-[rgba(255,255,255,0.2)] outline-none' type="url" name="deployUrl" id="deployUrl" placeholder='Enter the deployment url' />
                 <input onChange={handleChange} className='w-full rounded-lg px-4 py-2 bg-[rgba(255,255,255,0.2)] outline-none' type="url" name='repoUrl' id='repoUrl' placeholder='Enter the repository url' />
-                <input onChange={handleChange} className='w-full rounded-lg outline-none' name='images' type="file" multiple />
+                <input onChange={handleChange} className='w-full rounded-lg outline-none py-2' name='images' type="file" multiple />
                 <div className="upload w-full">
                     <button onClick={handleUpload} onMouseEnter={buttonEnter} onMouseLeave={textLeave} className='bg-white text-black my-2 px-4 py-2 rounded-md'>Upload</button>
                 </div>
-            </div>
+            </motion.div>
         </>
     )
 }
