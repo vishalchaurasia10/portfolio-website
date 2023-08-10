@@ -1,6 +1,7 @@
 import Cursor from '@/components/Layout/Cursor'
 import Navbar from '@/components/Layout/Navbar'
 import MouseVariantsState from '@/context/mouseVariants/MouseVariantsState'
+import ProjectState from '@/context/projects/ProjectState'
 import '@/styles/globals.css'
 
 export default function App({ Component, pageProps }) {
@@ -9,7 +10,9 @@ export default function App({ Component, pageProps }) {
       <MouseVariantsState>
         <Navbar />
         <Cursor />
-        <Component {...pageProps} />
+        <ProjectState>
+          <Component {...pageProps} />
+        </ProjectState>
       </MouseVariantsState>
     </>
   )
