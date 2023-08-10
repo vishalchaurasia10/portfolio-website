@@ -21,8 +21,6 @@ const ProjectState = (props) => {
             );
 
             setProjects(result.documents);
-
-            console.log(result);
         } catch (error) {
             toast.error(error.message);
         }

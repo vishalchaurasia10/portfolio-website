@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import Link from 'next/link'
 import React, { useContext, useEffect } from 'react'
 import { FaGithub } from 'react-icons/fa'
@@ -6,15 +5,9 @@ import mouseVariantsContext from '@/context/mouseVariants/mouseVariantsContext'
 import { motion } from 'framer-motion'
 import SimpleImageSlider from "react-simple-image-slider";
 
-const ProjectCard = () => {
+const ProjectCard = ({ elementKey, imageUrl, name, repoUrl, deployUrl, startDate, endDate, description, type }) => {
     const MouseVariantsContext = useContext(mouseVariantsContext);
-    const { buttonEnter,importantEnter, textLeave } = MouseVariantsContext;
-    const images = [
-        { url: 'https://media.istockphoto.com/id/1146517111/photo/taj-mahal-mausoleum-in-agra.jpg?s=612x612&w=0&k=20&c=vcIjhwUrNyjoKbGbAQ5sOcEzDUgOfCsm9ySmJ8gNeRk=' },
-        { url: 'https://media.istockphoto.com/id/1146517111/photo/taj-mahal-mausoleum-in-agra.jpg?s=612x612&w=0&k=20&c=vcIjhwUrNyjoKbGbAQ5sOcEzDUgOfCsm9ySmJ8gNeRk=' },
-        { url: 'https://media.istockphoto.com/id/1146517111/photo/taj-mahal-mausoleum-in-agra.jpg?s=612x612&w=0&k=20&c=vcIjhwUrNyjoKbGbAQ5sOcEzDUgOfCsm9ySmJ8gNeRk=' },
-        { url: 'https://media.istockphoto.com/id/1146517111/photo/taj-mahal-mausoleum-in-agra.jpg?s=612x612&w=0&k=20&c=vcIjhwUrNyjoKbGbAQ5sOcEzDUgOfCsm9ySmJ8gNeRk=' },
-    ]
+    const { buttonEnter, textLeave } = MouseVariantsContext;
 
     useEffect(() => {
         const handleSliderMount = () => {
@@ -41,7 +34,8 @@ const ProjectCard = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.2 }}
             viewport={{ once: true }}
-            className="wrapper relative lg:w-[25rem] xl:w-[24rem] mb-8 md:mb-16 lg:mr-7 xl:mr-7">
+            key={elementKey}
+            className="wrapper relative w-full lg:w-[25rem] xl:w-[24rem] mb-8 md:mb-16 lg:mr-7 xl:mr-7">
 
             <div className='absolute top-0 -right-3 z-0 w-[101%] h-[102.5%] rounded-[2rem] bg-slate-400' />
             <div className="projectCard relative z-10 bg-black font-firaCode space-y-4 md:space-y-5 border border-white w-full rounded-[2rem] p-5 md:p-7 text-[#E5E5E5]">
@@ -50,7 +44,7 @@ const ProjectCard = () => {
                     <SimpleImageSlider
                         width={300}
                         height={200}
-                        images={images}
+                        images={imageUrl}
                         autoPlay={true}
                         loop={true}
                     />
@@ -58,14 +52,18 @@ const ProjectCard = () => {
 
                 <div className="content flex flex-col space-y-[0.3rem] md:space-y-4">
                     <div className="time flex justify-between items-center">
-                        <span className='text-lg md:text-xl text-[#57E6D9]'>Website</span>
-                        <span className='text-sm'>Aug,2023 - Sept,2023</span>
+                        <span className='text-lg md:text-xl text-[#57E6D9]'>{type}</span>
+                        <span className='text-sm'>{startDate} - {endDate}</span>
                     </div>
-                    <Link onMouseEnter={buttonEnter} onMouseLeave={textLeave} className='text-2xl md:text-3xl font-extrabold' href='/'>Cloud-Scribe</Link>
-                    <p className="description text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, accusamus? Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro, iure.</p>
+                    <Link onMouseEnter={buttonEnter} onMouseLeave={textLeave} className='text-2xl md:text-3xl font-extrabold' href='/'>{name}</Link>
+                    <p className="description text-justify">{description}</p>
                     <div className="visitingLinks py-3 md:py-0 flex space-x-4">
-                        <button onMouseEnter={buttonEnter} onMouseLeave={textLeave} className='bg-white text-black px-4 rounded-md'>Visit</button>
-                        <FaGithub onMouseEnter={buttonEnter} onMouseLeave={textLeave} className="github w-8 h-8" />
+                        <Link href={deployUrl} target='_blank' >
+                            <button onMouseEnter={buttonEnter} onMouseLeave={textLeave} className='bg-white text-black px-4 rounded-md'>Visit</button>
+                        </Link>
+                        <Link href={repoUrl} target='_blank' >
+                            <FaGithub onMouseEnter={buttonEnter} onMouseLeave={textLeave} className="github w-8 h-8" />
+                        </Link>
                     </div>
                 </div>
 
