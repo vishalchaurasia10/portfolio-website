@@ -46,7 +46,6 @@ const GalleryState = (props) => {
             );
 
             setImagesUrl([...imagesUrl, ...uploadedFileUrls]);
-            console.log(imagesUrl);
 
         } catch (error) {
             toast.error(error.message);
@@ -85,8 +84,6 @@ const GalleryState = (props) => {
                     position: 'top-center',
                 }
             );
-
-            console.log(result);
 
         } catch (error) {
             toast.error(error.message);

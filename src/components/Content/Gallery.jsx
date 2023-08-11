@@ -21,10 +21,6 @@ const Gallery = () => {
             fetchGalleryDocuments()
     }, [])
 
-    useEffect(() => {
-        console.log(gallery)
-    }, [gallery])
-
     return (
         <>
             <div className="container font-firaCode px-5 pb-32 md:w-full md:mx-auto">

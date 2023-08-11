@@ -1,3 +1,4 @@
+import Contact from '@/components/Content/Contact'
 import Cursor from '@/components/Layout/Cursor'
 import Navbar from '@/components/Layout/Navbar'
 import GalleryState from '@/context/gallery/GalleryState'
@@ -14,6 +15,7 @@ export default function App({ Component, pageProps }) {
         <GalleryState >
           <ProjectState>
             <Component {...pageProps} />
+            <Contact />
           </ProjectState>
         </GalleryState>
       </MouseVariantsState>
