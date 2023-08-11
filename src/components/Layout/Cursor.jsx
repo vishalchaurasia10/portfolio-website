@@ -49,12 +49,12 @@ const Cursor = () => {
             backgroundColor: "#57E6D9",
             mixBlendMode: "difference",
         },
-        images: {
-            height: 120,
-            width: 120,
-            x: mousePostition.x - 40,
-            y: mousePostition.y - 40,
-            backgroundColor: "#E966A0",
+        navbarSmall: {
+            height: 80,
+            width: 80,
+            x: mousePostition.x - 20,
+            y: mousePostition.y - 20,
+            backgroundColor: "#FFCCCC",
             mixBlendMode: "difference",
         },
     }

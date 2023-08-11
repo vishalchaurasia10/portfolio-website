@@ -1,7 +1,5 @@
 import React, { useContext, useState } from 'react'
 import { motion } from 'framer-motion'
-import Lottie from 'lottie-react'
-import githubLogo from '@/assets/animations/githubLogo'
 import Image from 'next/image'
 import Link from 'next/link'
 import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
@@ -11,7 +9,7 @@ import { useRouter } from 'next/router'
 const Navbar = () => {
 
     const MouseVariantsContext = useContext(mouseVariantsContext);
-    const { navbarEnter, textLeave } = MouseVariantsContext;
+    const { navbarEnter, navbarSmallEnter , textLeave } = MouseVariantsContext;
     const [isOpen, setIsOpen] = useState(false)
     const router = useRouter();
 
@@ -55,11 +53,23 @@ const Navbar = () => {
                     </ul>
                 </div>
 
-                <div className="right md:relative md:-top-2 flex justify-end items-center w-1/2 md:w-1/4 pr-4 md:pr-8">
-                    <div className="logoWrapper flex items-center">
-                        <Link className='pr-4 md:pr-0' target='_blank' href='https://github.com/vishalchaurasia10' >
-                            <Lottie className='h-8 w-8 hidden md:block' animationData={githubLogo} />
-                        </Link>
+                <div className="right md:relative flex justify-end items-center w-1/2 md:w-1/4 pr-4 lg:pr-8">
+                    <div className="logoWrapper hidden md:flex items-center space-x-2 lg:space-x-6 justify-end">
+                        <li className="flex items-center">
+                            <Link target='_blank' href='https://github.com/vishalchaurasia10'>
+                                <FaGithub onMouseEnter={navbarSmallEnter} onMouseLeave={textLeave} className='text-2xl lg:text-3xl text-white' />
+                            </Link>
+                        </li>
+                        <li className='flex items-center'>
+                            <Link target='_blank' href='https://twitter.com/vishalstwt'>
+                                <FaTwitter onMouseEnter={navbarSmallEnter} onMouseLeave={textLeave} className='text-2xl lg:text-3xl text-white' />
+                            </Link>
+                        </li>
+                        <li className='flex items-center'>
+                            <Link target='_blank' href='https://www.linkedin.com/in/vishalchaurasia10/'>
+                                <FaLinkedin onMouseEnter={navbarSmallEnter} onMouseLeave={textLeave} className='text-2xl lg:text-3xl text-white' />
+                            </Link>
+                        </li>
                     </div>
                     <div className="hamburger md:hidden flex flex-col space-y-1" onClick={handleHamburgerClick}>
                         <motion.div

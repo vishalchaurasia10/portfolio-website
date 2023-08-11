@@ -58,6 +58,9 @@ const Contact = () => {
           transition={{ duration: 0.5 }}
           className='wrapper fixed inset-0 backdrop-blur-md bottom-0 z-30 h-screen flex items-center justify-center w-full pt-28 pb-20 md:pt-40 lg:pt-32 px-3'>
           <div className="messageWrapper font-firaCode text-white border border-white bg-black lg:w-1/2 rounded-2xl p-6 md:p-8">
+            <div className="heading py-5 flex items-center space-x-4">
+              <h1 className='text-5xl md:text-6xl font-extrabold text-[#57E6D9]'>Message me</h1>
+            </div>
             <form
               onSubmit={(e) => {
                 if (!checkValidity()) {
