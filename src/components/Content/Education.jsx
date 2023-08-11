@@ -36,12 +36,12 @@ const Education = () => {
 
     return (
         <>
-            <div className="container font-firaCode px-5 pb-32 md:w-full md:mx-auto">
+            <div ref={ref} className="container font-firaCode md:my-28 px-5 pb-32 md:pb-12 md:w-full md:mx-auto">
                 <div className="heading flex items-center mb-12 space-x-4">
                     <h1 className='text-5xl md:text-7xl my-8 font-extrabold text-[#57E6D9]'>Education</h1>
                     <div className="line rounded-full w-3/4 h-1 bg-[#57E6D9]"></div>
                 </div>
-                <div ref={ref} className="points w-3/4 mx-auto relative">
+                <div  className="points w-3/4 mx-auto relative">
                     <motion.div
                         style={{ scaleY: scrollYProgress }}
                         className="line absolute transition-all duration-100 rounded-full -left-8 top-0 w-1 h-full bg-[#57E6D9] origin-top"></motion.div>
