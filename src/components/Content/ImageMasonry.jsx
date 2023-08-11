@@ -12,7 +12,6 @@ const ImageMasonry = ({ imageUrl, date, description, setShowMore, showMore }) =>
     const [visibleImages, setVisibleImages] = useState(imageUrl);
     const MouseVariantsContext = useContext(mouseVariantsContext);
     const { importantEnter, buttonEnter, textLeave } = MouseVariantsContext;
-    console.log(visibleImages)
 
     useEffect(() => {
         if (width < 1000) {
