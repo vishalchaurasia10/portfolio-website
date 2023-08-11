@@ -32,7 +32,7 @@ const PreviewImages = ({ images, setShowMore }) => {
                     {images.map((image, index) => {
                         return (
                             <SwiperSlide key={index}>
-                                <div className="img h-screen bg-black flex items-center">
+                                <div className="img md:h-screen bg-black flex items-center">
                                     <img className='rounded-lg w-full' src={image} alt={index} />
                                 </div>
                             </SwiperSlide>

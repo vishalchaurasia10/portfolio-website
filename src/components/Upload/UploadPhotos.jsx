@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 import mouseVariantsContext from '@/context/mouseVariants/mouseVariantsContext'
 import galleryContext from '@/context/gallery/galleryContext'
-import formatDate from '@/utils/formatDate'
+import { formatDateType2 } from '@/utils/formatDate'
 import { motion } from 'framer-motion'
 
 const UploadPhotos = () => {
@@ -23,7 +23,7 @@ const UploadPhotos = () => {
         images: imageFiles
       });
     } else if (name === 'date') {
-      const formattedDate = formatDate(value);
+      const formattedDate = formatDateType2(value);
       setGalleryDetails({
         ...galleryDetails,
         [name]: formattedDate
