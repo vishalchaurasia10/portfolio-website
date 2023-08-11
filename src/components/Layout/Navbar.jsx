@@ -84,7 +84,7 @@ const Navbar = () => {
                 </div>
             </motion.nav>
             {
-                <div onClick={() => setIsOpen(false)} className={`wrapper md:hidden overflow-hidden ${isOpen ? 'backdrop-blur-md' : ''} transition-all duration-300 fixed z-30`}>
+                <div onClick={() => setIsOpen(false)} className={`wrapper md:hidden overflow-hidden ${isOpen ? 'backdrop-blur-md' : 'hidden'} transition-all duration-300 fixed z-30`}>
                     <motion.div
                         initial={{ x: '100%', opacity: 0 }}
                         animate={{ x: isOpen ? '40%' : '100%', opacity: 1 }}
