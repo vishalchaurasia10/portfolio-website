@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { SiGooglemessages } from 'react-icons/si'
 import { AiFillCloseCircle } from 'react-icons/ai'
 import { motion } from 'framer-motion'
@@ -19,6 +19,20 @@ const Contact = () => {
   const handleClick = () => {
     setIsOpen(!isOpen)
   }
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+        if (event.keyCode === 27) {
+            setIsOpen(false);
+        }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+        window.removeEventListener('keydown', handleKeyDown);
+    };
+}, [isOpen]);
 
   const handleChange = (e) => {
     const { name, value } = e.target
