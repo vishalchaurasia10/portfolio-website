@@ -1,13 +1,11 @@
+import CustomHead from '@/components/Layout/CustomHead'
 import UploadProjectDetails from '@/components/Upload/UploadProjectDetails'
-import Head from 'next/head'
 import React from 'react'
 
 const uploads = () => {
     return (
         <>
-            <Head>
-                <title>Uploads - Vishal Chaurasia</title>
-            </Head>
+            <CustomHead title='Uploads - Vishal Chaurasia' description='I will upload projects here.' />
             <UploadProjectDetails />
         </>
     )
