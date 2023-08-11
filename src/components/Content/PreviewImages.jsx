@@ -15,8 +15,9 @@ const PreviewImages = ({ images, setShowMore }) => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 1 }}
+                className='fixed top-0 left-0 w-screen h-screen flex items-center justify-center z-[30] bg-black'
             >
-                <AiFillCloseCircle onClick={() => { setShowMore(false) }} className='absolute z-[29] -top-16 lg:-top-7 lg:right-4 right-0 text-3xl text-white cursor-pointer' />
+                <AiFillCloseCircle onClick={() => { setShowMore(false) }} className='absolute z-[29] right-4 top-20 md:top-32 md:right-8 text-3xl md:text-4xl text-white cursor-pointer' />
                 <div className="wrapper overflow-hidden flex items-center justify-center bg-black">
                     <Swiper className='mySwiper lg:w-1/2 h-fit rounded-lg shadow-[#382b16]'
                         grabCursor={true}
