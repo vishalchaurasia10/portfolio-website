@@ -18,11 +18,10 @@ const Gallery = () => {
     });
 
     const toggleShowMore = (index, value) => {
-        const updatedShowMoreList = showMoreList.map((_, i) => i === index ? value : false);
+        const updatedShowMoreList = [...showMoreList];
+        updatedShowMoreList[index] = value;
         setShowMoreList(updatedShowMoreList);
     };
-
-
 
     useEffect(() => {
         if (gallery.length === 0)

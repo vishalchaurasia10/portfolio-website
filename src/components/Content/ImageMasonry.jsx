@@ -41,15 +41,12 @@ const ImageMasonry = ({ imageUrl, date, description, setShowMore, showMore }) =>
 
     return (
         <>
-            {showMore &&
-                <PreviewImages images={imageUrl} setShowMore={setShowMore} />
-            }
             <motion.div
                 initial={{ opacity: 0, y: 100 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1 }}
                 viewport={{ once: true }}
-                onClick={() => { setShowMore(true) }} className="contentGallery ml-2 mb-24 md:mb-32 md:ml-6 lg:ml-10 text-white">
+                onClick={() => { setShowMore(true) ;console.log('clicked') }} className="contentGallery ml-2 mb-24 md:mb-32 md:ml-6 lg:ml-10 text-white">
                 <p onMouseEnter={buttonEnter} onMouseLeave={textLeave} className='text-[#57E6D9] text-sm md:text-lg mb-2'>{date}</p>
                 <h3 className='mb-4 md:text-lg capitalize'>{description}</h3>
                 <div className="gallery mx-auto relative">
@@ -91,6 +88,9 @@ const ImageMasonry = ({ imageUrl, date, description, setShowMore, showMore }) =>
                     </div>
                 </div>
             </motion.div>
+            {showMore &&
+                <PreviewImages images={imageUrl} setShowMore={setShowMore} />
+            }
         </>
     )
 }
