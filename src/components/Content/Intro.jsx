@@ -5,6 +5,7 @@ import scrollDown from '@/assets/animations/scrollDown'
 import { motion } from 'framer-motion'
 import Typed from 'typed.js';
 import mouseVariantsContext from '@/context/mouseVariants/mouseVariantsContext'
+import { useRouter } from 'next/router'
 
 const Intro = () => {
   const glitch = useGlitch();
@@ -12,10 +13,7 @@ const Intro = () => {
   const el2 = useRef(null);
   const MouseVariantsContext = useContext(mouseVariantsContext);
   const { textEnter, textLeave } = MouseVariantsContext;
-
-  const handlescrollAnimation = () => {
-    console.log('complete')
-  }
+  const router = useRouter();
 
   useEffect(() => {
     if (el.current == null) return;
@@ -59,7 +57,7 @@ const Intro = () => {
 
         <div className='h-10 bg-black absolute bottom-20 cursor-pointer'>
           <Lottie
-            onComplete={handlescrollAnimation}
+            onClick={() => { router.push('/aboutme') }}
             onMouseEnter={textEnter}
             onMouseLeave={textLeave}
             animationData={scrollDown} />

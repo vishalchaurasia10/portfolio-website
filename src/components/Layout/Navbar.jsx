@@ -9,7 +9,7 @@ import { useRouter } from 'next/router'
 const Navbar = () => {
 
     const MouseVariantsContext = useContext(mouseVariantsContext);
-    const { navbarEnter, navbarSmallEnter , textLeave } = MouseVariantsContext;
+    const { navbarEnter, navbarSmallEnter, textLeave } = MouseVariantsContext;
     const [isOpen, setIsOpen] = useState(false)
     const router = useRouter();
 
@@ -25,7 +25,9 @@ const Navbar = () => {
                 transition={{ delay: 0, duration: 0.5 }}
                 className='fixed top-0 left-0 z-40 w-full py-4 flex justify-center items-center font-firaCode text-xl bg-black'>
                 <div className="left w-1/2 md:w-1/4 pl-4 md:pl-8 flex items-center">
-                    <Image className='h-8 w-8 relative md:-top-2 rounded-full' src='/assets/images/portfolioLogo.jpg' width={100} height={100} alt='Logo' />
+                    <Link onMouseEnter={navbarSmallEnter} onMouseLeave={textLeave} href='/'>
+                        <Image className='h-8 w-8 relative md:-top-2 rounded-full' src='/assets/images/portfolioLogo.jpg' width={100} height={100} alt='Logo' />
+                    </Link>
                 </div>
 
                 <div className="center hidden md:flex w-1/2 items-center justify-center">
@@ -146,36 +148,3 @@ const Navbar = () => {
 }
 
 export default Navbar
-
-
-{/* <motion.div
-                    initial={{ x: 100, opacity: 0 }}
-                    animate={{ x: 50, opacity: 1 }}
-                    // transition={{ duration: 0.2 }}
-                    className="mobile md:hidden z-30 bg-slate-400 absolute h-screen w-full flex items-center justify-center">
-                    <ul className='flex z-40 h-screen w-full flex-col text-[#58ff13] space-y-5 py-8 px-10'>
-                        <Link href='/'>
-                            <li className='whitespace-nowrap text-5xl'>Home</li>
-                        </Link>
-                        <Link href='/projects'>
-                            <li className='whitespace-nowrap'>Projects</li>
-                        </Link>
-                        <Link href='/aboutme'>
-                            <li className='whitespace-nowrap'>About Me</li>
-                        </Link>
-                        <Link href='/gallery'>
-                            <li className='whitespace-nowrap'>Gallery</li>
-                        </Link>
-                        <li className='flex justify-center items-center space-x-2'>
-                            <Link className='pr-4 md:pr-0' target='_blank' href='https://github.com/vishalchaurasia10' >
-                                <FaGithub className='h-6 w-6 text-white' />
-                            </Link>
-                            <Link className='pr-4 md:pr-0' target='_blank' href='https://twitter.com/vishalstwt' >
-                                <FaTwitter className='h-6 w-6 text-white' />
-                            </Link>
-                            <Link className='pr-4 md:pr-0' target='_blank' href='https://www.linkedin.com/in/vishalchaurasia10/' >
-                                <FaLinkedin className='h-6 w-6 text-white' />
-                            </Link>
-                        </li>
-                    </ul>
-                </motion.div> */}

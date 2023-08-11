@@ -6,8 +6,6 @@ import ImageMasonry from './ImageMasonry'
 const Gallery = () => {
 
     const { gallery, fetchGalleryDocuments } = useContext(galleryContext)
-
-    const [showMore, setShowMore] = useState(false);
     const [showMoreList, setShowMoreList] = useState(new Array(gallery.length).fill(false));
 
 

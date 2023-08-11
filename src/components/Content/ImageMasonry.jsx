@@ -3,34 +3,35 @@ import Masonry, { ResponsiveMasonry } from "react-responsive-masonry"
 import { motion } from 'framer-motion'
 import mouseVariantsContext from '@/context/mouseVariants/mouseVariantsContext'
 import PreviewImages from './PreviewImages'
+import Image from 'next/image'
 
 const ImageMasonry = ({ imageUrl, date, description, setShowMore, showMore }) => {
 
     const [width, setWidth] = useState(0);
     const [lastImageHeight, setLastImageHeight] = useState('');
-    let visibleImages = imageUrl;
+    const [visibleImages, setVisibleImages] = useState(imageUrl);
     const MouseVariantsContext = useContext(mouseVariantsContext);
     const { importantEnter, buttonEnter, textLeave } = MouseVariantsContext;
-
-    if (width < 1000) {
-        if (imageUrl.length > 4) {
-            visibleImages = showMore ? imageUrl : imageUrl.slice(0, 3);
-        }
-    } else {
-        if (imageUrl.length > 6) {
-            visibleImages = showMore ? imageUrl : imageUrl.slice(0, 5);
-        }
-    }
+    console.log(visibleImages)
 
     useEffect(() => {
-        const lastColumnLastImage = document.getElementsByClassName('moreImages')[0].previousElementSibling.firstChild.lastChild.lastChild
-        const lastColumn = document.getElementsByClassName('moreImages')[0].previousElementSibling.firstChild.lastChild
-        if (lastColumnLastImage == null) return
-        if ((lastColumn.offsetHeight - lastColumnLastImage.offsetHeight - 10) >= 60)
-            setLastImageHeight(`${lastColumn.offsetHeight - lastColumnLastImage.offsetHeight - 10}px`)
-        else
-            setLastImageHeight('100%')
-    }, [lastImageHeight])
+        if (width < 1000) {
+            setVisibleImages(showMore ? imageUrl : imageUrl.slice(0, 3));
+        } else {
+            setVisibleImages(showMore ? imageUrl : imageUrl.slice(0, 5));
+        }
+    }, [showMore, width, imageUrl]);
+
+    const handleImageLoad = () => {
+        const lastColumnLastImage = document.getElementsByClassName('moreImages')[0].previousElementSibling.firstChild.lastChild.lastChild;
+        const lastColumn = document.getElementsByClassName('moreImages')[0].previousElementSibling.firstChild.lastChild;
+        if (lastColumnLastImage == null) return;
+        if ((lastColumn.offsetHeight - lastColumnLastImage.offsetHeight - 10) >= 60) {
+            setLastImageHeight(`${lastColumn.offsetHeight - lastColumnLastImage.offsetHeight - 10}px`);
+        } else {
+            setLastImageHeight('100%');
+        }
+    };
 
     useEffect(() => {
         setWidth(window.innerWidth);
@@ -46,7 +47,7 @@ const ImageMasonry = ({ imageUrl, date, description, setShowMore, showMore }) =>
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1 }}
                 viewport={{ once: true }}
-                onClick={() => { setShowMore(true) ;console.log('clicked') }} className="contentGallery ml-2 mb-24 md:mb-32 md:ml-6 lg:ml-10 text-white">
+                onClick={() => { setShowMore(true) }} className="contentGallery ml-2 mb-24 md:mb-32 md:ml-6 lg:ml-10 text-white">
                 <p onMouseEnter={buttonEnter} onMouseLeave={textLeave} className='text-[#57E6D9] text-sm md:text-lg mb-2'>{date}</p>
                 <h3 className='mb-4 md:text-lg capitalize'>{description}</h3>
                 <div className="gallery mx-auto relative">
@@ -55,10 +56,13 @@ const ImageMasonry = ({ imageUrl, date, description, setShowMore, showMore }) =>
                     >
                         <Masonry gutter='10px'>
                             {visibleImages.map((image, i) => (
-                                <img
+                                <Image
+                                    onLoad={() => !showMore && handleImageLoad()}
                                     onMouseEnter={importantEnter}
                                     onMouseLeave={textLeave}
                                     className='rounded-lg md:rounded-2xl'
+                                    width={200}
+                                    height={200}
                                     key={i}
                                     src={image}
                                     style={{ width: "100%", display: "block" }}
