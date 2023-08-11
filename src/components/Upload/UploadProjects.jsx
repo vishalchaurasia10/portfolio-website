@@ -1,12 +1,13 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import mouseVariantsContext from '@/context/mouseVariants/mouseVariantsContext'
-import { Client, Databases, ID, Storage } from 'appwrite';
-import toast, { Toaster } from 'react-hot-toast';
 import { motion } from 'framer-motion';
+import { formatDate } from '@/utils/formatDate';
+import projectContext from '@/context/projects/projectContext';
 
 const UploadProjects = () => {
     const { buttonEnter, textLeave } = useContext(mouseVariantsContext)
-    const [imagesUrl, setImagesUrl] = useState([])
+    const { uploadProjectImages } = useContext(projectContext)
+
     const [projectDetails, setProjectDetails] = useState({
         startDate: '',
         endDate: '',
@@ -42,102 +43,21 @@ const UploadProjects = () => {
         }
     };
 
-
-    const handleUpload = async () => {
-        try {
-            const client = new Client()
-                .setEndpoint('https://cloud.appwrite.io/v1')
-                .setProject(process.env.NEXT_PUBLIC_PROJECT_ID);
-
-            const storage = new Storage(client);
-
-            const uploadedFiles = await Promise.all(projectDetails.images.map(async (imageFile) => {
-                const result = await storage.createFile(
-                    process.env.NEXT_PUBLIC_BUCKET_ID,
-                    ID.unique(),
-                    imageFile,
-                );
-                return result.$id;
-            }));
-
-            toast.promise(
-                Promise.resolve(uploadedFiles), // Use `Promise.resolve` to create a resolved promise with the uploadedFiles array
-                {
-                    success: () => 'Images successfully uploaded!',
-                    error: () => 'Error uploading images.',
-                    duration: 3000,
-                    position: 'top-center',
-                }
-            );
-
-            const uploadedFileUrls = uploadedFiles.map((fileId) =>
-                storage.getFileView(process.env.NEXT_PUBLIC_BUCKET_ID, fileId)
-            );
-
-            setImagesUrl([...imagesUrl, ...uploadedFileUrls]);
-            console.log(imagesUrl);
-
-        } catch (error) {
-            toast.error(error.message);
-        }
-    };
-
-    useEffect(() => {
-        if (imagesUrl.length > 0) {
-            handleSubmit();
-        }
-    }, [imagesUrl]);
-
-    const handleSubmit = async (e) => {
-        try {
-            const client = new Client()
-                .setEndpoint('https://cloud.appwrite.io/v1')
-                .setProject(process.env.NEXT_PUBLIC_PROJECT_ID);
-
-            const databases = new Databases(client);
-            const result = await databases.createDocument(
-                process.env.NEXT_PUBLIC_DATABASE_ID,
-                process.env.NEXT_PUBLIC_PROJECTS_COLLECTION_ID,
-                ID.unique(),
-                {
-                    ...projectDetails,
-                    images: imagesUrl,
-                },
-            );
-
-            toast.promise(
-                Promise.resolve(result), // Use `Promise.resolve` to create a resolved promise with the fileId
-                {
-                    success: () => 'Project successfully uploaded!',
-                    error: () => 'Error uploading project.',
-                    duration: 3000,
-                    position: 'top-center',
-                }
-            );
-
-            console.log(result);
-
-        } catch (error) {
-            toast.error(error.message);
-        }
-    };
-
-    function formatDate(inputDate) {
-        const months = [
-            'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-            'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
-        ];
-
-        const [year, month, day] = inputDate.split('-');
-        const formattedDate = `${months[parseInt(month, 10) - 1]}, ${year}`;
-
-        return formattedDate;
+    const clearForm = () => {
+        setProjectDetails({
+            startDate: '',
+            endDate: '',
+            type: '',
+            name: '',
+            description: '',
+            deployUrl: '',
+            repoUrl: '',
+            images: []
+        })
     }
-
 
     return (
         <>
-            <Toaster />
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -156,7 +76,7 @@ const UploadProjects = () => {
                 <input onChange={handleChange} className='w-full rounded-lg px-4 py-2 bg-[rgba(255,255,255,0.2)] outline-none' type="url" name='repoUrl' id='repoUrl' placeholder='Enter the repository url' />
                 <input onChange={handleChange} className='w-full rounded-lg outline-none py-2' name='images' type="file" multiple />
                 <div className="upload w-full">
-                    <button onClick={handleUpload} onMouseEnter={buttonEnter} onMouseLeave={textLeave} className='bg-white text-black my-2 px-4 py-2 rounded-md'>Upload</button>
+                    <button onClick={() => { uploadProjectImages(projectDetails); clearForm() }} onMouseEnter={buttonEnter} onMouseLeave={textLeave} className='bg-white text-black my-2 px-4 py-2 rounded-md'>Upload</button>
                 </div>
             </motion.div>
         </>

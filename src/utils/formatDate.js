@@ -5,7 +5,7 @@ export function formatDate(inputDate) {
     ];
 
     const [year, month, day] = inputDate.split('-');
-    const formattedDate = `${months[parseInt(month, 10) - 1]}, ${year}`;
+    const formattedDate = `${months[parseInt(month, 10) - 1]},${year}`;
 
     return formattedDate;
 }
@@ -17,9 +17,7 @@ export function formatDateType2(inputDate) {
     ];
 
     const [year, month, day] = inputDate.split('-');
-    const formattedDate = `${months[parseInt(month, 10) - 1]} ${parseInt(day, 10)}, ${year}`;
-
-    console.log(formattedDate);
+    const formattedDate = `${months[parseInt(month, 10) - 1]} ${parseInt(day, 10)},${year}`;
 
     return formattedDate;
 }
