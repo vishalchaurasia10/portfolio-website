@@ -103,7 +103,7 @@ const GalleryState = (props) => {
                 process.env.NEXT_PUBLIC_GALLERY_COLLECTION_ID,
             );
 
-            setGallery(result.documents);
+            setGallery(result.documents.reverse());
         } catch (error) {
             toast.error(error.message);
         }

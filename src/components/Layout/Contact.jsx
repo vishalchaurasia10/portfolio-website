@@ -4,9 +4,11 @@ import { AiFillCloseCircle } from 'react-icons/ai'
 import { motion } from 'framer-motion'
 import mouseVariantsContext from '@/context/mouseVariants/mouseVariantsContext'
 import { Toaster, toast } from 'react-hot-toast'
+import { useRouter } from 'next/router'
 
 const Contact = () => {
   const [isOpen, setIsOpen] = useState(false)
+  const router = useRouter()
   const { buttonEnter, importantEnter, textLeave } = useContext(mouseVariantsContext)
   const [message, setMessage] = useState({
     name: '',
@@ -82,11 +84,11 @@ const Contact = () => {
       {isOpen ?
         <div
           onClick={handleClick} onMouseEnter={importantEnter} onMouseLeave={textLeave} className='fixed bottom-8 right-6 md:right-8 z-40 rounded-full flex justify-center items-center font-firaCode text-xl bg-black'>
-          <AiFillCloseCircle className='text-[#57E6D9] text-5xl' />
+          <AiFillCloseCircle className={`${router.pathname==='/' ? 'text-[#58ff13]':'text-[#57E6D9]'} text-5xl`} />
         </div>
         :
         <div onClick={handleClick} onMouseEnter={importantEnter} className='fixed bottom-8 right-6 md:right-8 z-40 rounded-full flex justify-center items-center font-firaCode text-xl bg-black'>
-          <SiGooglemessages className='text-[#57E6D9] text-5xl' />
+          <SiGooglemessages className={`${router.pathname==='/' ? 'text-[#58ff13]':'text-[#57E6D9]'} text-5xl`} />
         </div>}
     </>
   )

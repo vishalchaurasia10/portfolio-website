@@ -108,7 +108,7 @@ const ProjectState = (props) => {
                 process.env.NEXT_PUBLIC_PROJECTS_COLLECTION_ID,
             );
 
-            setProjects(result.documents);
+            setProjects(result.documents.reverse());
         } catch (error) {
             toast.error(error.message);
         }

@@ -1,4 +1,4 @@
-import Contact from '@/components/Content/Contact'
+import Contact from '@/components/Layout/Contact'
 import Cursor from '@/components/Layout/Cursor'
 import Navbar from '@/components/Layout/Navbar'
 import GalleryState from '@/context/gallery/GalleryState'

@@ -42,7 +42,7 @@ const ImageMasonry = ({ imageUrl, date, description, setShowMore, showMore }) =>
         <motion.div
             initial={{ opacity: 0, y: 100 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.6 }}
+            transition={{ duration: 1 }}
             viewport={{ once: true }}
             onClick={() => { setShowMore(true) }} className="contentGallery ml-2 md:ml-6 lg:ml-10 text-white">
             <p onMouseEnter={buttonEnter} onMouseLeave={textLeave} className='text-[#57E6D9] text-sm md:text-lg mb-2'>{date}</p>
