@@ -1,11 +1,12 @@
 import React, { useContext, useState } from 'react'
 import { SiGooglemessages } from 'react-icons/si'
+import { AiFillCloseCircle } from 'react-icons/ai'
 import { motion } from 'framer-motion'
 import mouseVariantsContext from '@/context/mouseVariants/mouseVariantsContext'
 
 const Contact = () => {
   const [isOpen, setIsOpen] = useState(false)
-  const { buttonEnter, textLeave } = useContext(mouseVariantsContext)
+  const { buttonEnter, importantEnter, textLeave } = useContext(mouseVariantsContext)
   const [message, setMessage] = useState({
     name: '',
     email: '',
@@ -31,7 +32,7 @@ const Contact = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
-          className='wrapper absolute backdrop-blur-md bottom-0 z-30 h-screen flex items-center justify-center w-full pt-28 pb-20 md:pt-40 lg:pt-32 px-3'>
+          className='wrapper fixed inset-0 backdrop-blur-md bottom-0 z-30 h-screen flex items-center justify-center w-full pt-28 pb-20 md:pt-40 lg:pt-32 px-3'>
           <div className="messageWrapper font-firaCode text-white border border-white bg-black lg:w-1/2 rounded-2xl p-6 md:p-8">
             <div
               className="sendMessage flex flex-col items-center justify-center space-y-4 mt-4">
@@ -44,9 +45,15 @@ const Contact = () => {
             </div>
           </div>
         </motion.div>}
-      <div onClick={handleClick} onMouseEnter={buttonEnter} onMouseLeave={textLeave} className='fixed bottom-8 right-6 md:right-8 z-40 rounded-full flex justify-center items-center font-firaCode text-xl bg-black'>
-        <SiGooglemessages className='text-[#57E6D9] text-5xl' />
-      </div>
+      {isOpen ?
+        <div
+          onClick={handleClick} onMouseEnter={importantEnter} onMouseLeave={textLeave} className='fixed bottom-8 right-6 md:right-8 z-40 rounded-full flex justify-center items-center font-firaCode text-xl bg-black'>
+          <AiFillCloseCircle className='text-[#57E6D9] text-5xl' />
+        </div>
+        :
+        <div onClick={handleClick} onMouseEnter={importantEnter} className='fixed bottom-8 right-6 md:right-8 z-40 rounded-full flex justify-center items-center font-firaCode text-xl bg-black'>
+          <SiGooglemessages className='text-[#57E6D9] text-5xl' />
+        </div>}
     </>
   )
 }
