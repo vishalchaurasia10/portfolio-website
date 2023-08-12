@@ -52,11 +52,11 @@ const Intro = () => {
           transition={{ delay: 0, duration: 1 }}
           className="introText flex flex-col relative px-2 md:px-0 -top-10 items-center justify-center space-y-8">
 
-          <h1 ref={el} onMouseEnter={textEnter} onMouseLeave={textLeave} className="text-2xl md:text-4xl mix-blend-difference text-[#58ff13] lg:px-40 font-firaCode text-center font-bold typed-text"></h1>
+          <h1 ref={el} onMouseEnter={textEnter} onMouseLeave={textLeave} className="text-3xl md:text-4xl mix-blend-difference text-[#58ff13] lg:px-40 font-firaCode text-center font-bold typed-text"></h1>
 
-          <p ref={glitch.ref} onMouseEnter={textEnter} onMouseLeave={textLeave} className='name text-4xl mix-blend-difference lg:text-8xl font-extrabold text-[#58ff13] font-firaCode'>Vishal Chaurasia</p>
+          <p ref={glitch.ref} onMouseEnter={textEnter} onMouseLeave={textLeave} className='name text-center text-4xl mix-blend-difference lg:text-8xl font-extrabold text-[#58ff13] font-firaCode'>Vishal Chaurasia</p>
 
-          <p ref={el2} onMouseEnter={textEnter} onMouseLeave={textLeave} className="text-2xl mix-blend-difference md:text-4xl text-[#58ff13] lg:px-40 font-firaCode text-center font-bold typed-text" ></p>
+          <p ref={el2} onMouseEnter={textEnter} onMouseLeave={textLeave} className="text-3xl mix-blend-difference md:text-4xl text-[#58ff13] lg:px-40 font-firaCode text-center font-bold typed-text" ></p>
 
         </motion.div>
 
