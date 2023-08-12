@@ -22,7 +22,7 @@ const About = () => {
                     initial={{ x: -100, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
                     transition={{ duration: 1.2, delay: 0.4 }}
-                    className="content md:w-1/2 lg:w-[62%] flex flex-col xl:relative xl:top-16 space-y-4 order-2 md:order-1 text-white text-md lg:text-xl text-justify">
+                    className="content md:w-1/2 lg:w-[62%] flex flex-col xl:justify-center xl:relative space-y-4 order-2 md:order-1 text-white text-md lg:text-xl text-justify">
                     <p>
                         Hello there! I&apos;m <strong onMouseEnter={importantEnter} onMouseLeave={textLeave} className='text-[#57E6D9]'> Vishal Chaurasia</strong>, a passionate and enthusiastic {Math.floor(totalMonths / 12)}-year-old <strong onMouseEnter={importantEnter} onMouseLeave={textLeave} className='text-[#57E6D9]'> Full-Stack Developer</strong> from India.
                     </p>
@@ -41,12 +41,12 @@ const About = () => {
                     initial={{ x: 100, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
                     transition={{ duration: 1.2, delay: 0.4 }}
-                    className="image w-fit md:w-1/2 lg:w-[30%] relative mr-2 mb-16 order-1 md:order-2">
+                    className="image w-fit md:w-1/2 lg:w-[30%] relative mr-2 mb-16 xl:mb-4 order-1 md:order-2">
                     <div className='absolute shadow-2xl shadow-slate-500 top-0 -right-3 z-0 w-[101%] h-[102.5%] rounded-[2rem] bg-slate-500' />
                     <Image onMouseEnter={importantEnter} onMouseLeave={textLeave} className='rounded-3xl relative z-10' src="/assets/images/vc.jpg" alt="Picture of the author" width={500} height={500} />
                 </motion.div>
             </div>
-            <div className='hidden md:flex mb-10 items-center justify-center  bg-black cursor-pointer'>
+            <div className='hidden md:flex mt-10 items-center justify-center  bg-black cursor-pointer'>
                 <Link to='skills' smooth={true} duration={1000}>
                     <Lottie
                         className='w-16 h-16'

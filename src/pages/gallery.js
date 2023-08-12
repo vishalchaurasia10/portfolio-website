@@ -8,7 +8,9 @@ const gallery = () => {
     <>
       <CustomHead title='Gallery - Vishal Chaurasia' description='Explore the gallery of Vishal Chaurasia&apos;s projects, events, and moments captured in images.' />
       <Transition />
-      <Gallery />
+      <div className="galleryWrapper lg:px-5 xl:px-32">
+        <Gallery />
+      </div>
     </>
   )
 }

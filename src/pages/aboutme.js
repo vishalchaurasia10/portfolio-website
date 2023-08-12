@@ -9,10 +9,12 @@ const aboutme = () => {
   return (
     <>
       <CustomHead title='About Me - Vishal Chaurasia' description='Learn more about Vishal Chaurasia, his background, skills, and education.' />
-      <Transition />
-      <About />
-      <Skills />
-      <Education />
+      <div className="aboutWrapper lg:px-5 xl:px-32">
+        <Transition />
+        <About />
+        <Skills />
+        <Education />
+      </div>
     </>
   )
 }
