@@ -14,6 +14,11 @@ const Intro = () => {
   const MouseVariantsContext = useContext(mouseVariantsContext);
   const { textEnter, textLeave } = MouseVariantsContext;
   const router = useRouter();
+  const startDate = new Date(2003, 9); // Month is zero-based, so 9 represents October
+  const currentDate = new Date();
+  const yearsDiff = currentDate.getFullYear() - startDate.getFullYear();
+  const monthsDiff = currentDate.getMonth() - startDate.getMonth();
+  const totalMonths = yearsDiff * 12 + monthsDiff;
 
   useEffect(() => {
     if (el.current == null) return;
@@ -24,7 +29,7 @@ const Intro = () => {
 
     if (el2.current == null) return;
     const typed2 = new Typed(el2.current, {
-      strings: ['19 y/o Full-Stack Developer from India.'],
+      strings: [`${Math.floor(totalMonths / 12)} y/o Full-Stack Developer from India.`],
       typeSpeed: 30,
     });
 
