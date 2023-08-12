@@ -56,7 +56,7 @@ const PreviewImages = ({ images, setShowMore }) => {
                         {images.map((image, index) => {
                             return (
                                 <SwiperSlide key={index}>
-                                    <div className="img bg-black flex items-center">
+                                    <div className="img bg-black h-screen flex items-center">
                                         <img className='rounded-lg w-full' src={image} alt={index} />
                                     </div>
                                 </SwiperSlide>
