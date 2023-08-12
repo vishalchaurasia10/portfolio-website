@@ -86,7 +86,7 @@ const Contact = () => {
               className="sendMessage flex flex-col items-center justify-center space-y-4 mt-4" action="https://formsubmit.co/itsvishal1035@gmail.com" method='post'>
               <input onChange={handleChange} value={message.name} className='w-full rounded-lg px-4 py-2 bg-[rgba(255,255,255,0.2)] outline-none' type="text" name='name' placeholder='Enter your name' />
               <input onChange={handleChange} value={message.email} className='w-full rounded-lg px-4 py-2 bg-[rgba(255,255,255,0.2)] outline-none' type="email" name='email' placeholder='Enter your email' />
-              <textarea onChange={handleChange} value={message.message} className='w-full rounded-lg px-4 py-2 bg-[rgba(255,255,255,0.2)] outline-none' name="message" id="message" cols="30" rows="4" />
+              <textarea onChange={handleChange} value={message.message} className='w-full rounded-lg px-4 py-2 bg-[rgba(255,255,255,0.2)] outline-none' placeholder='Enter your message' name="message" id="message" cols="30" rows="4" />
               <div className="upload w-full">
                 <input onMouseEnter={buttonEnter} onMouseLeave={textLeave} type='submit' value='Send' className={`bg-white text-black my-2 px-4 py-2 rounded-md`} />
               </div>

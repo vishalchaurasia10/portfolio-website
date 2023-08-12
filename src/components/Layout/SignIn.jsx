@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import toast, { Toaster } from 'react-hot-toast';
 import signInContext from '@/context/SignIn/signInContext';
 import { motion } from 'framer-motion';
@@ -18,6 +18,7 @@ const SignIn = () => {
 
     const checkValidity = (e) => {
         e.preventDefault()
+        console.log(credentials)
         if (credentials.email === '' || credentials.secretKey === '') {
             toast.error('Please fill all the fields')
         } else if (credentials.email.indexOf('@') === -1) {
@@ -29,6 +30,22 @@ const SignIn = () => {
             signIn(credentials)
         }
     }
+
+    const handleKeyDown = (event) => {
+        console.log('Key pressed:', event.key);
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            console.log('Enter key pressed');
+            checkValidity(event);
+        }
+    };
+
+    useEffect(() => {
+        window.addEventListener('keydown', handleKeyDown);
+        return () => {
+            window.removeEventListener('keydown', handleKeyDown);
+        };
+    }, [credentials]);
 
     return (
         <>
