@@ -6,6 +6,7 @@ import GalleryState from '@/context/gallery/GalleryState'
 import MouseVariantsState from '@/context/mouseVariants/MouseVariantsState'
 import ProjectState from '@/context/projects/ProjectState'
 import '@/styles/globals.css'
+import { Analytics } from '@vercel/analytics/react';
 
 export default function App({ Component, pageProps }) {
   return (
@@ -17,6 +18,7 @@ export default function App({ Component, pageProps }) {
           <GalleryState >
             <ProjectState>
               <Component {...pageProps} />
+              <Analytics />
               <Contact />
             </ProjectState>
           </GalleryState>
