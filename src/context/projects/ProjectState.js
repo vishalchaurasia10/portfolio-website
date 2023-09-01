@@ -1,12 +1,14 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import ProjectContext from "./projectContext";
 import { Client, Databases, ID, Storage } from "appwrite";
 import { Toaster, toast } from "react-hot-toast";
+import loadingContext from "../loading/loadingContext";
 
 const ProjectState = (props) => {
 
     const [projects, setProjects] = useState([]);
     const [imagesUrl, setImagesUrl] = useState([])
+    const { setLoading } = useContext(loadingContext);
     const [projectDetails, setProjectDetails] = useState({
         startDate: '',
         endDate: '',
@@ -97,6 +99,7 @@ const ProjectState = (props) => {
 
     const fetchProjects = async () => {
         try {
+            setLoading(true);
             const client = new Client()
                 .setEndpoint('https://cloud.appwrite.io/v1')
                 .setProject(process.env.NEXT_PUBLIC_PROJECT_ID);
@@ -109,6 +112,7 @@ const ProjectState = (props) => {
             );
 
             setProjects(result.documents.reverse());
+            setLoading(false);
         } catch (error) {
             toast.error(error.message);
         }

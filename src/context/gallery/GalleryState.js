@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import GalleryContext from "./galleryContext";
 import { Client, Databases, ID, Storage } from 'appwrite';
 import toast, { Toaster } from 'react-hot-toast';
+import loadingContext from "../loading/loadingContext";
 
 const GalleryState = (props) => {
 
+    const {setLoading} = useContext(loadingContext);
     const [gallery, setGallery] = useState([]);
     const [imagesUrl, setImagesUrl] = useState([])
     const [galleryDetails, setGalleryDetails] = useState({
@@ -92,6 +94,7 @@ const GalleryState = (props) => {
 
     const fetchGalleryDocuments = async () => {
         try {
+            setLoading(true);
             const client = new Client()
                 .setEndpoint('https://cloud.appwrite.io/v1')
                 .setProject(process.env.NEXT_PUBLIC_PROJECT_ID);
@@ -104,6 +107,7 @@ const GalleryState = (props) => {
             );
 
             setGallery(result.documents.reverse());
+            setLoading(false);
         } catch (error) {
             toast.error(error.message);
         }

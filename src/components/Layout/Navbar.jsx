@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -12,11 +12,30 @@ const Navbar = () => {
     const MouseVariantsContext = useContext(mouseVariantsContext);
     const { navbarEnter, navbarSmallEnter, textLeave } = MouseVariantsContext;
     const [isOpen, setIsOpen] = useState(false)
+    const [isMobile, setIsMobile] = useState(false);
     const router = useRouter();
 
     const handleHamburgerClick = () => {
         setIsOpen(!isOpen);
     };
+
+    useEffect(() => {
+        // Function to check screen size
+        function checkScreenSize() {
+            setIsMobile(window.innerWidth < 768); // Adjust the breakpoint as needed
+        }
+
+        // Add event listener for window resize
+        window.addEventListener('resize', checkScreenSize);
+
+        // Initial check on component mount
+        checkScreenSize();
+
+        // Clean up the event listener when the component unmounts
+        return () => {
+            window.removeEventListener('resize', checkScreenSize);
+        };
+    }, []);
 
     return (
         <>
@@ -57,7 +76,7 @@ const Navbar = () => {
                 </div>
 
                 <div className="right md:relative flex justify-end items-center w-1/2 md:w-1/4 pr-4 lg:pr-8">
-                    <div className="logoWrapper hidden md:flex items-center space-x-2 lg:space-x-6 justify-end">
+                    <div className="logoWrapper hidden lg:flex items-center space-x-2 lg:space-x-6 justify-end">
                         <li className="flex items-center">
                             <Link className={`${router.pathname === '/' ? 'text-[#58ff13]' : 'text-[#57E6D9]'}`} target='_blank' href='https://cloud.appwrite.io/v1/storage/buckets/64d5270341acdb0cc1ff/files/64f243e7444259e7d4c1/view?project=64cf576f77d32036391f'>
                                 <BsFilePdfFill title='View Resume' onMouseEnter={navbarSmallEnter} onMouseLeave={textLeave} className='text-2xl lg:text-3xl' />
@@ -79,7 +98,7 @@ const Navbar = () => {
                             </Link>
                         </li>
                     </div>
-                    <div className="hamburger md:hidden flex flex-col space-y-1" onClick={handleHamburgerClick}>
+                    <div className="hamburger lg:hidden flex flex-col space-y-1" onClick={handleHamburgerClick}>
                         <motion.div
                             initial={{ rotate: 0 }}
                             animate={{ rotate: isOpen ? 45 : 0, y: isOpen ? 7 : 0 }}
@@ -102,10 +121,13 @@ const Navbar = () => {
                 </div>
             </motion.nav>
             {
-                <div onClick={() => setIsOpen(false)} className={`wrapper md:hidden overflow-hidden ${isOpen ? 'backdrop-blur-md' : 'hidden'} transition-all duration-300 fixed z-30`}>
+                <div onClick={() => setIsOpen(false)} className={`wrapper lg:hidden overflow-hidden ${isOpen ? 'backdrop-blur-md' : 'hidden'} transition-all duration-300 fixed z-30`}>
                     <motion.div
                         initial={{ x: '100%', opacity: 0 }}
-                        animate={{ x: isOpen ? '40%' : '100%', opacity: 1 }}
+                        animate={{
+                            x: isMobile ? (isOpen ? '40%' : '100%') : (isOpen ? '60%' : '100%'),
+                            opacity: 1,
+                        }}
                         transition={{ duration: 0.3 }}
                         className={`mobileNavbar bg-black font-firaCode ${isOpen ? 'shadow-[#57E6D9] shadow-2xl' : ''} pt-24 px-10 text-white h-screen w-screen`}>
                         <ul className='flex flex-col space-y-8'>
