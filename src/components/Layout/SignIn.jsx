@@ -18,7 +18,6 @@ const SignIn = () => {
 
     const checkValidity = (e) => {
         e.preventDefault()
-        console.log(credentials)
         if (credentials.email === '' || credentials.secretKey === '') {
             toast.error('Please fill all the fields')
         } else if (credentials.email.indexOf('@') === -1) {
@@ -32,10 +31,8 @@ const SignIn = () => {
     }
 
     const handleKeyDown = (event) => {
-        console.log('Key pressed:', event.key);
         if (event.key === 'Enter') {
             event.preventDefault();
-            console.log('Enter key pressed');
             checkValidity(event);
         }
     };

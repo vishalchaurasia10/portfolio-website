@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import { BsFilePdfFill } from 'react-icons/bs';
 import mouseVariantsContext from '@/context/mouseVariants/mouseVariantsContext'
 import { useRouter } from 'next/router'
 
@@ -57,6 +58,11 @@ const Navbar = () => {
 
                 <div className="right md:relative flex justify-end items-center w-1/2 md:w-1/4 pr-4 lg:pr-8">
                     <div className="logoWrapper hidden md:flex items-center space-x-2 lg:space-x-6 justify-end">
+                        <li className="flex items-center">
+                            <Link className={`${router.pathname === '/' ? 'text-[#58ff13]' : 'text-[#57E6D9]'}`} target='_blank' href='https://cloud.appwrite.io/v1/storage/buckets/64d5270341acdb0cc1ff/files/64f243e7444259e7d4c1/view?project=64cf576f77d32036391f'>
+                                <BsFilePdfFill title='View Resume' onMouseEnter={navbarSmallEnter} onMouseLeave={textLeave} className='text-2xl lg:text-3xl' />
+                            </Link>
+                        </li>
                         <li className="flex items-center">
                             <Link target='_blank' href='https://github.com/vishalchaurasia10'>
                                 <FaGithub onMouseEnter={navbarSmallEnter} onMouseLeave={textLeave} className='text-2xl lg:text-3xl text-white' />
@@ -136,6 +142,11 @@ const Navbar = () => {
                             <li className='text-xl'>
                                 <Link className='flex space-x-3' target='_blank' href='https://www.linkedin.com/in/vishalchaurasia10/'>
                                     <span>Linkedin</span><FaLinkedin className='h-6 w-6 text-white' />
+                                </Link>
+                            </li>
+                            <li className='text-xl'>
+                                <Link className={`flex space-x-3 ${router.pathname === '/' ? 'text-[#58ff13]' : 'text-[#57E6D9]'}`} target='_blank' href='https://cloud.appwrite.io/v1/storage/buckets/64d5270341acdb0cc1ff/files/64f243e7444259e7d4c1/view?project=64cf576f77d32036391f&mode=admin'>
+                                    <span className='tracking-wider'>Resume</span><BsFilePdfFill title='View Resume' onMouseEnter={navbarSmallEnter} onMouseLeave={textLeave} className='text-2xl lg:text-3xl' />
                                 </Link>
                             </li>
                         </ul>
