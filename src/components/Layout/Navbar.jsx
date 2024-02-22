@@ -78,7 +78,7 @@ const Navbar = () => {
                 <div className="right md:relative flex justify-end items-center w-1/2 md:w-1/4 pr-4 lg:pr-8">
                     <div className="logoWrapper hidden lg:flex items-center space-x-2 lg:space-x-6 justify-end">
                         <li className="flex items-center">
-                            <Link className={`${router.pathname === '/' ? 'text-[#58ff13]' : 'text-[#57E6D9]'}`} target='_blank' href='https://cloud.appwrite.io/v1/storage/buckets/64d5270341acdb0cc1ff/files/64f243e7444259e7d4c1/view?project=64cf576f77d32036391f'>
+                            <Link className={`${router.pathname === '/' ? 'text-[#58ff13]' : 'text-[#57E6D9]'}`} target='_blank' href='https://cloud.appwrite.io/v1/storage/buckets/64d5270341acdb0cc1ff/files/65d70be0782d3231d54e/view?project=64cf576f77d32036391f'>
                                 <BsFilePdfFill title='View Resume' onMouseEnter={navbarSmallEnter} onMouseLeave={textLeave} className='text-2xl lg:text-3xl' />
                             </Link>
                         </li>
